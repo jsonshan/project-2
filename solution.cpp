@@ -32,9 +32,9 @@ inline void addInRange(size_t min, size_t max, std::vector<File*> result, Node* 
     {
         if (curr->size_ <= max)
         {
-            for (int i = 0; i < curr->files_.size(); ++i)
+            for (auto it = curr->files_.begin(); it != curr->files_.end(); ++it)
             {
-                result.push_back(curr->files_[i]);
+                result.push_back(*it);
             }
         }
     }
