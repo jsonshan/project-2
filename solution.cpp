@@ -66,6 +66,10 @@ std::vector<File*> FileAVL::query(size_t min, size_t max) {
 void FileTrie::addFile(File* f)
 {
     std::string name = f->getName();
+    if (name == "")
+    {
+        return;
+    }
     // Check if name is valid
     // Characters allowed are a-z, 0-9, and . (period).
     int period = 0;
@@ -134,7 +138,7 @@ std::unordered_set<File*> FileTrie::getFilesWithPrefix(const std::string& prefix
    FileTrieNode* curr = head;
 
     // for loop prefix
-   for (std::size_t i = 0; i < prefix.length(); ++i)
+   for (int i = 0; i < prefix.length(); ++i)
    {
     // if doesn't find any valid next letter to go to 
     if (curr->next.find(prefix[i]) == curr->next.end())
