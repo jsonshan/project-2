@@ -82,11 +82,7 @@ void FileTrie::addFile(File* f)
             {
                 ++period;
             }
-            if (period > 1)
-            {
-                return;
-            }
-            if (name[i] != '.')
+            if (period > 1 || name[i] != '.')
             {
                 return;
             }
@@ -136,7 +132,11 @@ std::unordered_set<File*> FileTrie::getFilesWithPrefix(const std::string& prefix
     */
    // initalize curr
    FileTrieNode* curr = head;
-
+    if (prefix.length() == 1)
+    {
+        curr = curr->next[prefix[0]];
+        return curr->matching;
+    }
     // for loop prefix
    for (int i = 0; i < prefix.length(); ++i)
    {
