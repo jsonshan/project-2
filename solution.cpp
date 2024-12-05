@@ -64,10 +64,20 @@ void FileTrie::addFile(File* f)
     std::string name = f->getName();
     // Check if name is valid
     // Characters allowed are a-z, 0-9, and . (period).
+    int period = 0;
+
     for (int i = 0; i < name.length(); ++i)
     {
         if (!isalnum(name[i]))
         {
+            if (name[i] == '.')
+            {
+                ++period;
+            }
+            if (period > 1)
+            {
+                return;
+            }
             if (name[i] != '.')
             {
                 return;
