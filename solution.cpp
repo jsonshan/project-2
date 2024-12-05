@@ -133,11 +133,6 @@ std::unordered_set<File*> FileTrie::getFilesWithPrefix(const std::string& prefix
         return curr->matching;
     }
 
-    if (prefix == 'a')
-    {
-        curr = curr->next['a'];
-        return curr->matching;
-    }
     // for loop prefix
    for (int i = 0; i < prefix.length(); ++i)
    {
