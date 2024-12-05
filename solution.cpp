@@ -27,11 +27,12 @@ inline void addInRange(size_t min, size_t max, std::vector<File*>& result, Node*
    {
     return;
    }
-
+    // checks if it's in range
     if (curr->size_ >= min)
     {
         if (curr->size_ <= max)
         {
+            // push_back all files that are in range
             for (auto it = curr->files_.begin(); it != curr->files_.end(); ++it)
             {
                 result.push_back(*it);
@@ -132,7 +133,7 @@ std::unordered_set<File*> FileTrie::getFilesWithPrefix(const std::string& prefix
    FileTrieNode* curr = head;
 
     // for loop prefix
-   for (int i = 0; i < prefix.length(); ++i)
+   for (std::size_t i = 0; i < prefix.length(); ++i)
    {
     // if doesn't find any valid next letter to go to 
     if (curr->next.find(prefix[i]) == curr->next.end())
