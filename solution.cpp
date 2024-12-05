@@ -94,7 +94,7 @@ void FileTrie::addFile(File* f)
     if (curr->next.find(name[i]) == curr->next.end())
     {
         // reaches end, but finds no next so creates new file
-        curr->next[name[i]] == new FileTrieNode(name[i]);
+        curr->next[name[i]] = new FileTrieNode(name[i]);
     }
     // points to the next node
     curr = curr->next[name[i]];
