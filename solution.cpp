@@ -83,6 +83,11 @@ void FileTrie::addFile(File* f)
             }
         }
     }
+    // lowercases all capital letters
+    for (auto it = name.begin(); it != name.end(); ++it)
+    {
+        *it = std::tolower(*it);
+    }
     /* 
     - Insert file into current matching (starting at root)
     - Traverse letter of a name
