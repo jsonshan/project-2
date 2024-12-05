@@ -137,13 +137,13 @@ std::unordered_set<File*> FileTrie::getFilesWithPrefix(const std::string& prefix
  // Destructor
 
 
-inline void FileTrie::deleteAllNodes(FileTrieNode* current)
+inline void deleteAllNodes(FileTrieNode* current)
 {
     if (current == nullptr)
     {
         return;
     }
-
+    // iterates through each node and recursively deletes it from the trie
     for (auto curr: current->next)
     {
         deleteAllNodes(curr.second);
