@@ -72,7 +72,7 @@ void FileTrie::addFile(File* f)
     }
     // Check if name is valid
     // Characters allowed are a-z, 0-9, and . (period).
-    
+
     for (int i = 0; i < name.length(); ++i)
     {
         if (!isalnum(name[i]))
@@ -127,7 +127,11 @@ std::unordered_set<File*> FileTrie::getFilesWithPrefix(const std::string& prefix
     */
    // initalize curr
    FileTrieNode* curr = head;
-
+    
+    if (prefix.length() == 0)
+    {
+        return curr->matching;
+    }
     // for loop prefix
    for (int i = 0; i < prefix.length(); ++i)
    {
