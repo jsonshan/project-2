@@ -27,6 +27,10 @@ inline void addInRange(size_t min, size_t max, std::vector<File*>& result, Node*
    {
     return;
    }
+
+    // recursively call on left child so we can dfs into first leaf
+    addInRange(min, max, result, curr->left_);
+
     // checks if it's in range
     if (curr->size_ >= min)
     {
@@ -39,9 +43,6 @@ inline void addInRange(size_t min, size_t max, std::vector<File*>& result, Node*
             }
         }
     }
-
-    // recursively call on left child
-    addInRange(min, max, result, curr->left_);
 
     // recursively call on right child
     addInRange(min, max, result, curr->right_);
