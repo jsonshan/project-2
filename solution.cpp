@@ -17,7 +17,7 @@
         the interval from [max, min] is searched (since max >= min)
  */
 
-inline void addInRange(size_t min, size_t max, std::vector<File*> result, Node* curr)
+inline void addInRange(size_t min, size_t max, std::vector<File*>& result, Node* curr)
 {
     /*
     add curr if valid
