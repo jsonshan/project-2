@@ -28,6 +28,9 @@ inline void addInRange(size_t min, size_t max, std::vector<File*> result, Node* 
     return;
    }
 
+    // recursively call on left child
+    addInRange(min, max, result, curr->left_);
+
     if (curr->size_ >= min)
     {
         if (curr->size_ <= max)
@@ -38,8 +41,7 @@ inline void addInRange(size_t min, size_t max, std::vector<File*> result, Node* 
             }
         }
     }
-    // recursively call on left child
-    addInRange(min, max, result, curr->left_);
+
     // recursively call on right child
     addInRange(min, max, result, curr->right_);
 
