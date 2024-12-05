@@ -28,20 +28,20 @@ inline void addInRange(size_t min, size_t max, std::vector<File*> result, Node* 
     return;
    }
 
-    if (curr->getSize() >= min)
+    if (curr->size_ >= min)
     {
-        if (curr->getSize() <= max)
+        if (curr->size_ <= max)
         {
-            for (int i = 0; i < files_.size(); ++i)
+            for (int i = 0; i < curr->files_.size(); ++i)
             {
-                result.push_back(files_[i]);
+                result.push_back(curr->files_[i]);
             }
         }
     }
     // recursively call on left child
-    addInRange(min, max, result, curr->left);
+    addInRange(min, max, result, curr->left_);
     // recursively call on right child
-    addInRange(min, max, result, curr->right);
+    addInRange(min, max, result, curr->right_);
 
 }
 
@@ -54,21 +54,21 @@ std::vector<File*> FileAVL::query(size_t min, size_t max) {
     return result vector
     */
     
-    addInRange(min, max, result, root_)
+    addInRange(min, max, result, root_);
 
     return result;
 }
 
 void FileTrie::addFile(File* f)
 {
-    std::string name = f.getName();
+    std::string name = f->getName();
     // Check if name is valid
     // Characters allowed are a-z, 0-9, and . (period).
     for (int i = 0; i < name.length(); ++i)
     {
         if (!isalnum(name[i]))
         {
-            if (name[i] != ".")
+            if (name[i] != '.')
             {
                 return;
             }
@@ -123,7 +123,7 @@ std::unordered_set<File*> FileTrie::getFilesWithPrefix(const std::string& prefix
    for (int i = 0; i < prefix.length(); ++i)
    {
     // if doesn't find any valid next letter to go to 
-    if (curr->next.find(name[i]) == curr->next.end())
+    if (curr->next.find(prefix[i]) == curr->next.end())
     {
         // return empty set
         return {};
