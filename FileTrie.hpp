@@ -2,7 +2,9 @@
  * @file FileTrie.hpp
  * @brief Defines the interface for the FileTrie class & implementation of the TrieNode struct
  */
-
+#ifndef USE_VECTOR
+#define USE_VECTOR
+#endif
 
 #pragma once
 #include <unordered_map>
@@ -17,7 +19,8 @@ struct FileTrieNode {
     char stored;
 
     std::unordered_set<File*> matching;
-    std::unordered_map<char, FileTrieNode*> next;
+    std::vector<FileTrieNode*> next;
+    // std::unordered_map<char, FileTrieNode*> next;
 
     FileTrieNode(const char& c = ' ', File* to_add = nullptr) : stored{c}, matching{}, next{} {
         if (to_add) { matching.insert(to_add); }

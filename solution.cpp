@@ -158,6 +158,7 @@ std::unordered_set<File*> FileTrie::getFilesWithPrefix(const std::string& prefix
 
 inline void deleteAllNodes(FileTrieNode* current)
 {
+    // recursive base case for when it reaches the end of the Trie, deletes
     if (current == nullptr)
     {
         return;
